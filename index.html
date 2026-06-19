@@ -172,16 +172,10 @@
 
 </section>
 </div>
+</div>
 
 <!-- mobile -->
-<div class="mobile-version">
-    <section class="mobile-about">
-    <h2>About me</h2>
-    <img src="img/myphoto.png" alt="Truc">
-    <p>
-        ベトナム出身のチュックと申します...
-    </p>
-    </section>
+
 
     <div class="mobile-version">
 
@@ -274,138 +268,201 @@
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* FIX RELOAD POSITION */
-history.scrollRestoration = "manual";
-
-window.addEventListener("load", () => {
-    setTimeout(() => {
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant"
-    });
-
-    ScrollTrigger.refresh();
-}, 50);
-
-    setTimeout(() => {
-        ScrollTrigger.refresh();
-        updateProject();
-    }, 100);
-});
-
-/* DISABLE SCROLL INITIAL */
-document.body.style.overflow = "hidden";
-
-/* INITIAL STATES */
-gsap.set(".about-title",{ xPercent: -50, yPercent: -50 });
-gsap.set(".edu-title",{ autoAlpha: 0 });
-gsap.set(".timeline-item",{ opacity: 0, x: -40 });
+const isMobile = window.innerWidth <= 768;
 
 /* =========================
-   LOADER TIMELINE
+   RELOAD TOP
 ========================= */
+history.scrollRestoration = "manual";
+
+window.addEventListener("beforeunload", () => {
+    window.scrollTo(0, 0);
+});
+
+/* =========================
+   LOADER
+========================= */
+
+document.body.style.overflow = "hidden";
+
 let counter = { value: 0 };
 
-gsap.to(".logo-front",{
+gsap.to(".logo-front", {
     clipPath: "inset(0% 0 0 0)",
     duration: 3,
     ease: "power2.out"
 });
 
-gsap.to(".progress-fill",{
+gsap.to(".progress-fill", {
     width: "100%",
     duration: 3,
     ease: "power2.out"
 });
 
-gsap.to(counter,{
+gsap.to(counter, {
     value: 100,
     duration: 3,
     ease: "none",
+
     onUpdate: () => {
-        document.querySelector(".percent").innerHTML = Math.floor(counter.value) + "%";
+        document.querySelector(".percent").textContent =
+            Math.floor(counter.value) + "%";
     },
+
     onComplete: () => {
-        /* Exit loader */
-        gsap.to(".loader",{
+
+        gsap.to(".loader", {
             yPercent: -100,
             duration: 1.2,
             ease: "power4.inOut"
         });
 
-        /* Hide progress */
-        gsap.to(".progress",{
+        gsap.to(".progress", {
             opacity: 0,
             duration: 0.5
         });
 
-        /* Show about */
-        gsap.fromTo(".about-wrap",
-            { opacity: 0 },
-            { opacity: 1, duration: 1.2, ease: "power2.out" }
-        );
-
-        /* ENABLE SCROLL */
         document.body.style.overflow = "auto";
+
+        ScrollTrigger.refresh();
     }
 });
 
 /* =========================
-   ABOUT + EDUCATION SCROLL
+   DESKTOP ONLY
 ========================= */
-
-const isMobile = window.innerWidth <= 768;
-if(!isMobie){
-let tlAbout = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".about-wrap",
-        start: "top top",
-        end: "+=3000",
-        scrub: 2,
-        pin: true,
-        anticipatePin: 1
-    }
-});
-
-tlAbout
-    .fromTo(".about-title", { scale: 1, y: 0 }, { scale: 2, y: 0, ease: "none" }, 0)
-    .to(".about-title", { scale: 1, y: -window.innerHeight / 2 + 150, ease: "none" }, 0.5)
-    .fromTo(".about-infor", { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: "none" }, 0.9)
-    .fromTo(".text", { opacity: 0, y: 75 }, { opacity: 1, y: 0, ease: "none" }, 1)
-    .to(".about-infor", { opacity: 0, y: -50, duration: 0.5 }, 1.5)
-    .to(".about-title", { opacity: 0, duration: 0.5 }, 1.5)
-    .fromTo(".edu-title", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1, scale: 2, ease: "power2.out" }, 1.8)
-    .to(".edu-title", { scale: 1, y: -window.innerHeight / 2 + 150, ease: "none" }, 2.3)
-    .to(".timeline", { opacity: 1, duration: 0.3 }, 2.6)
-    .to(".timeline-line", { opacity: 1, scaleY: 1, duration: 1.2, ease: "power2.out" }, 2.8)
-    .fromTo(".timeline-item", { opacity: 0, y: 60 }, { opacity: 1, y: 0, stagger: 0.4, duration: 1, ease: "power3.out" }, 3)
-    .to(".dot", { scale: 1, stagger: 0.4, duration: 0.5, ease: "back.out(3)" }, 3.2)
-    .fromTo(".skill", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, 3.5);
-
-/* =========================
-   PROJECTS TITLE ANIMATION 
-========================= */
-let tlProjects = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".projects",
-       start: "top 40%" ,// Kích hoạt hiệu ứng chữ xuất hiện sớm hơn khi cuộn tới
-        toggleActions: "play none none reverse"
-    }
-});
-
-tlProjects.fromTo(".projects-tit", 
-    { scale: 1.5, opacity: 0 }, 
-    { scale: 1, opacity: 1, duration: 1, ease: "power2.out" }
-);
-
-/* =========================
-   PROJECT PREVIEW CONTROLLER (Luke Baffait Style)
-========================= */
-const projects = document.querySelectorAll(".project");
-const isMobile = window.innerWidth <= 768;
 
 if (!isMobile) {
+
+    gsap.set(".about-title", {
+        xPercent: -50,
+        yPercent: -50
+    });
+
+    gsap.set(".edu-title", {
+        autoAlpha: 0
+    });
+
+    gsap.set(".timeline-item", {
+        opacity: 0,
+        x: -40
+    });
+
+    /* ABOUT + EDUCATION */
+
+    const tlAbout = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".about-wrap",
+            start: "top top",
+            end: "+=3000",
+            scrub: 2,
+            pin: true,
+            anticipatePin: 1
+        }
+    });
+
+    tlAbout
+        .fromTo(".about-title",
+            { scale: 1 },
+            { scale: 2, ease: "none" }, 0
+        )
+
+        .to(".about-title", {
+            scale: 1,
+            y: -window.innerHeight / 2 + 150,
+            ease: "none"
+        }, 0.5)
+
+        .fromTo(".about-infor",
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, ease: "none" }, 0.9
+        )
+
+        .fromTo(".text",
+            { opacity: 0, y: 75 },
+            { opacity: 1, y: 0, ease: "none" }, 1
+        )
+
+        .to(".about-infor", {
+            opacity: 0,
+            y: -50
+        }, 1.5)
+
+        .to(".about-title", {
+            opacity: 0
+        }, 1.5)
+
+        .fromTo(".edu-title",
+            {
+                autoAlpha: 0,
+                y: 50
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                scale: 2,
+                duration: 1
+            }, 1.8
+        )
+
+        .to(".edu-title", {
+            scale: 1,
+            y: -window.innerHeight / 2 + 150
+        }, 2.3)
+
+        .to(".timeline", {
+            opacity: 1
+        }, 2.6)
+
+        .to(".timeline-line", {
+            opacity: 1,
+            scaleY: 1,
+            duration: 1.2
+        }, 2.8)
+
+        .fromTo(".timeline-item",
+            {
+                opacity: 0,
+                y: 60
+            },
+            {
+                opacity: 1,
+                y: 0,
+                stagger: 0.4
+            }, 3
+        )
+
+        .fromTo(".skill",
+            {
+                opacity: 0,
+                y: 60
+            },
+            {
+                opacity: 1,
+                y: 0
+            }, 3.5
+        );
+
+    /* PROJECT TITLE */
+
+    gsap.fromTo(".projects-tit",
+        {
+            scale: 1.5,
+            opacity: 0
+        },
+        {
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".projects",
+                start: "top 40%",
+                toggleActions: "play none none reverse"
+            }
+        }
+    );
+
+    /* PROJECT PREVIEW */
 
     const projects = document.querySelectorAll(".project");
     const previewImg = document.getElementById("previewImg");
@@ -420,37 +477,40 @@ if (!isMobile) {
 
             const rect = project.getBoundingClientRect();
 
-            if (rect.top < center && rect.bottom > center) {
+            if (
+                rect.top < center &&
+                rect.bottom > center
+            ) {
 
-                if (!project.classList.contains("active")) {
+                projects.forEach(item =>
+                    item.classList.remove("active")
+                );
 
-                    projects.forEach(item =>
-                        item.classList.remove("active")
-                    );
+                project.classList.add("active");
 
-                    project.classList.add("active");
+                previewImg.style.opacity = 0.1;
 
-                    previewImg.style.opacity = 0.1;
+                setTimeout(() => {
 
-                    setTimeout(() => {
+                    if (project.dataset.image) {
+                        previewImg.src =
+                            project.dataset.image;
+                    }
 
-                        if (project.dataset.image) {
-                            previewImg.src = project.dataset.image;
-                        }
+                    previewImg.style.opacity = 1;
 
-                        previewImg.style.opacity = 1;
-
-                    }, 150);
-                }
+                }, 150);
             }
         });
     }
+
+    updateProject();
 
     window.addEventListener("scroll", () => {
 
         if (!isScrolling) {
 
-            window.requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
 
                 updateProject();
 
@@ -462,50 +522,45 @@ if (!isMobile) {
         }
     });
 
-}
+    /* AURORA */
 
-// Lắng nghe sự kiện cuộn mượt bằng Throttling để tiết kiệm tài nguyên CPU
-window.addEventListener("scroll", () => {
-    if (!isScrolling) {
-        window.requestAnimationFrame(() => {
-            updateProject();
-            isScrolling = false;
-        });
-        isScrolling = true;
-    }
-});
-}
-/* =========================
-   AURORA PARALLAX
-========================= */
+    const blobs =
+        document.querySelectorAll(".blob");
 
-const blobs = document.querySelectorAll(".blob");
+    window.addEventListener("mousemove", e => {
 
-if(!isMobile){
+        const x =
+            e.clientX / window.innerWidth - 0.5;
 
-    window.addEventListener("mousemove",(e)=>{
+        const y =
+            e.clientY / window.innerHeight - 0.5;
 
-        const x = e.clientX / window.innerWidth - 0.5;
-        const y = e.clientY / window.innerHeight - 0.5;
-
-        blobs.forEach((blob,index)=>{
+        blobs.forEach((blob, index) => {
 
             const speed = (index + 1) * 20;
 
             blob.style.transform =
-            `translate(${x*speed}px,${y*speed}px)`;
+                `translate(${x * speed}px, ${y * speed}px)`;
+
         });
-
     });
-
 }
 
-// Chạy khởi tạo kiểm tra ngay khi nạp trang xong
-window.addEventListener("beforeunload", () => {
-    window.scrollTo(0, 0);
+/* =========================
+   LOAD FINISH
+========================= */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        window.scrollTo(0, 0);
+
+        ScrollTrigger.refresh();
+
+    }, 100);
+
 });
-
-
 </script>
 
 </body>
