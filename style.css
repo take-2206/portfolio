@@ -1,0 +1,699 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow-x:hidden;
+    font-family:"Cormorant Infant", serif;
+    position:relative;
+  
+}
+
+
+
+/* =========================
+   FONT
+========================= */
+
+@font-face{
+    font-family:"begitta";
+    src:url("./FONT/Begitta.otf") format("opentype");
+}
+
+.cormorant-infant{
+    font-family:"Cormorant Infant", serif;
+    font-optical-sizing:auto;
+    font-weight:300;
+    font-style:normal;
+}
+
+/* =========================
+   AURORA BACKGROUND
+========================= */
+
+.aurora-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -5;
+    
+    /* Nền gốc là màu xám trắng rất nhẹ để không bị chói */
+    background-color: #f8fafc; 
+    
+    /* Chồng nhiều lớp gradient để tạo hiệu ứng ánh sáng tự nhiên */
+    background-image: 
+        /* Ánh xanh dương/tím nhẹ ở chính giữa */
+        radial-gradient(circle at 50% 50%, rgba(253, 218, 241, 0.6) 0%, transparent 50%),
+        /* Ánh xanh lục bảo/teal mờ ở góc trên */
+        radial-gradient(circle at 40% 30%, rgba(251, 204, 243, 0.4) 0%, transparent 60%),
+        /* Ánh hồng/tím cực nhẹ tạo độ ấm */
+        radial-gradient(circle at 60% 60%, rgba(245, 239, 255, 0.5) 0%, transparent 50%);
+}
+
+
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+  
+    z-index:9999;
+
+    overflow:hidden;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-wrapper{
+    position:relative;
+
+    font-size:9vw;
+
+    font-family:"begitta", serif; /* FIX Warn 5: fallback serif thay vì sans-serif */
+
+    font-weight:100;
+
+    line-height:1;
+
+    letter-spacing:-6px;
+}
+
+.logo-bg{
+   color:rgba(68, 68, 68, 0.5);
+}
+
+.logo-front{
+    position:absolute;
+
+    inset:0;
+
+    color:#ffffff; 
+    text-shadow: 0 0 20px rgba(255,255,255,0.25);
+
+    clip-path:inset(100% 0 0 0);
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,0.12);
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+    position:fixed;
+
+    bottom:72px;
+    right:40px;
+
+    color:white;
+
+    font-size:11px;
+
+    font-weight:400;
+
+    letter-spacing:1px;
+
+    opacity:0.6;
+
+    z-index:10;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress{
+    position:fixed;
+
+    bottom:60px;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    z-index:10;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+
+    background:white;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-wrap{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    
+
+    overflow:hidden;
+
+    position:relative;
+
+    opacity:0;
+}
+
+/* =========================
+   ABOUT TITLE
+========================= */
+
+.about-title{
+    font-size:4vw;
+    font-family:"begitta", serif; /* FIX Warn 5: fallback serif */
+    font-weight:100;
+    position:absolute;
+    top:50%;
+    left:50%;
+    white-space:nowrap;
+    z-index:5;
+}
+
+/* =========================
+   ABOUT INFO
+========================= */
+
+.about-infor{
+    opacity:0;
+
+    transform:translateY(100px);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:80px;
+
+    position:relative;
+
+    z-index:2;
+
+padding:50px 70px;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(25px);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:
+0 20px 60px rgba(255,120,190,.15);
+
+
+}
+
+.text{
+    opacity:0;
+
+    transform:translateY(50px);
+
+    font-family:"Cormorant Infant", serif;
+
+    color: #334155;
+
+    font-size:20px;
+
+    line-height:2.2;
+
+    max-width:550px;
+}
+
+/* =========================
+   IMAGE + ICON
+========================= */
+
+.box{
+    width:320px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+
+    flex-shrink:0;
+}
+
+
+
+      
+.self-img img{
+    width:400px;
+    height:400px;
+    object-fit:contain;
+    display:block;
+}
+
+.contact{
+    position: relative;
+
+    width:300px;
+    height:80px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:25px;
+}
+
+.square{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 65px;
+    
+    background: rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,0.08);
+
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+}
+
+.icon{
+    position:relative;
+    z-index:2;
+}
+.icon img{
+    width:50px;
+    height:50px;
+    transition:0.3s;
+}
+
+.icon img:hover{
+    transform:scale(1.3) rotateZ(-0.2rad);
+}
+
+.edu-title {
+  font-size:4vw;
+
+    font-family:"begitta", serif; 
+
+    font-weight:100;
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    white-space:nowrap;
+
+    color:#ffffff;
+
+    z-index:10;
+
+}
+
+
+/* =========================
+   education
+========================= */
+.education{
+  min-height: 100vh;
+   position: absolute;
+   inset: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+h4{
+  font-size: 20px;
+  
+  
+}
+
+.edu{
+  display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:120px;
+    padding:120px;
+    min-height:100vh;
+
+    position: relative;
+    top: 10%;
+}
+.timeline{
+    flex:1;
+
+    font-family:"Cormorant Infant", serif;
+
+    position:relative;
+
+    padding-left:40px;
+}
+
+/* line */
+.timeline-line{
+    content:"";
+   opacity: 0;
+    position:absolute;
+    left:-15px;
+    top:10px;
+
+    width:2px;
+   height:calc(100% - 40px);
+
+    background:linear-gradient(
+        to bottom,
+        #c08a9b,
+        transparent
+    );
+      scale:1 0; /* GSAP animate */
+}
+
+.timeline-item{
+    margin-bottom:60px;
+    position:relative;
+    
+    
+}
+
+.dot{
+    content:"";
+
+    position:absolute;
+    left:-20px;
+    top:8px;
+
+    width:12px;
+    height:12px;
+   
+    border-radius:50%;
+
+    background:#c08a9b;
+
+    box-shadow:0 0 15px rgba(192,138,155,.4);
+}
+
+.timeline-item span{
+    font-size:14px;
+    color: #334155;
+    letter-spacing:2px;
+    
+}
+
+.timeline-item h4{
+    font-size:26px;
+    margin-top:10px;
+   color: #334155;
+}
+
+.timeline-item p{
+    margin-top:6px;
+    color: #334155;
+}
+
+
+
+.skill{
+    flex:1;
+
+    display: grid;
+   gap: 20px;
+   
+  
+}
+
+.skill h5,h6{
+    font-size:25px;
+    color: #334155;
+}
+
+.skill-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+/* skill ICON */
+.skill-card img{
+    width:120px;
+    height:120px;
+    transition:.4s;
+}
+
+.skill p{
+    color: #334155;
+}
+
+/* =========================
+   PROJECTS SECTION (Luke Baffait Style)
+========================= */
+.projects {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 10vh; /* Tạo khoảng trống ở đáy */
+}
+
+.projects-tit {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* Giảm chiều cao tiêu đề xuống một chút */
+    font-family: "begitta", serif; 
+    font-size: 4vw;
+    color: #334155;
+    text-align: center;
+}
+
+/* Khung bọc 2 cột */
+.project-section {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+/* CỘT TRÁI CHỨA ẢNH: Tự động khóa cứng khi cuộn tới nhờ CSS */
+.left-col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 35vh;
+    padding-bottom: 45vh;
+}
+
+/* Mỗi project cách nhau bằng đúng 1 chiều cao màn hình */
+.project {
+    height: 25vh; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 15%;
+    opacity: 0.2;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, color 0.4s ease;
+}
+
+/* Khi đi vào tâm màn hình */
+.project.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.project-link {
+    text-decoration: none; /* Xóa bỏ gạch chân mặc định của thẻ a */
+    color: inherit;       /* Ép thẻ a nhận lại màu sắc kế thừa từ .project h3 */
+    display: block;       /* Biến toàn bộ vùng chữ thành vùng bấm được */
+    width: 100%;
+}
+
+.project h3 {
+    font-size: 4.5vw; 
+    font-family: "Cormorant Infant", serif; 
+    font-weight: 300;
+    color: #334155;
+    white-space: nowrap;
+    transition: transform 0.3s ease; /* Thêm hiệu ứng nhích nhẹ khi di chuột */
+}
+
+/* Hiệu ứng Hover tăng trải nghiệm người dùng */
+.project.active h3:hover {
+    transform: translateX(10px); /* Khi dự án đang active và di chuột vào, chữ sẽ nhích sang phải */
+    color: #e6c0cb;             /* Đổi màu chữ sang hồng nhẹ quý phái giống tông nền body của bạn */
+}
+
+.right-col {
+    width: 50%;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-box {
+    width: 80%;
+    max-width: 550px;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #151515;
+}
+
+.preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+
+.about-title, .edu-title, .projects-tit{ 
+    letter-spacing:2px;
+     text-shadow: 0 10px 30px rgba(255,255,255,.35); 
+   color: #334155;
+}
+
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
+
+@media (max-width: 1024px) {
+    .about-infor {
+        gap: 40px;
+        padding: 30px 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .text {
+        font-size: 16px;
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .box {
+        width: 100%;
+        align-items: center;
+    }
+    
+    .self-img img {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .edu {
+        gap: 60px;
+        padding: 60px 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .project-section {
+        flex-direction: column;
+    }
+    
+    .left-col {
+        width: 100%;
+        padding: 40vh 20px;
+    }
+    
+    .right-col {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 40px 0;
+    }
+    
+    .project {
+        padding-left: 30px;
+    }
+    
+    .project h3 {
+        font-size: 2.5vw;
+        white-space: normal;
+    }
+}
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 640px) {
+    .logo-wrapper {
+        font-size: 4vw;
+    }
+    
+    .about-title, .edu-title, .projects-tit {
+        font-size: 2.5vw;
+    }
+    
+    .text {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    
+    .self-img img {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .contact {
+        width: 100%;
+        height: 60px;
+    }
+    
+    .square {
+        width: 80%;
+        height: 50px;
+    }
+    
+    .icon img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .skill h5, .skill h6 {
+        font-size: 18px;
+    }
+    
+    .skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project h3 {
+        font-size: 1.8vw;
+    }
+    
+    .timeline-item span {
+        font-size: 12px;
+    }
+    
+    .timeline-item h4 {
+        font-size: 18px;
+    }
+}

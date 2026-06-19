@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Truc's Portfolio</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300&family=Shippori+Mincho&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="loader">
+    <div class="logo-wrapper">
+        <div class="logo-bg">TRUC'S PORTFOLIO</div>
+        <div class="logo-front">TRUC'S PORTFOLIO</div>
+    </div>
+
+    <div class="loading">
+        loading...
+        <span class="percent">0%</span>
+    </div>
+</div>
+
+<div class="progress">
+    <div class="progress-fill"></div>
+</div>
+
+<div class="aurora-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+
+    <div class="noise"></div>
+    <div class="vignette"></div>
+</div>
+
+<div class="about-wrap">
+
+    <section class="about">
+        <h2 class="about-title">About me</h2>
+
+        <div class="about-infor">
+            <div class="text">
+                ベトナム出身のチュックと申します。<br>
+                現在、大阪を拠点に活動しています。
+                <br><br>
+                私の強みは、デザインスキルとITスキルを有していることです。これは、大阪総合デザイン専門学校でデザインスキルを習得し、大阪電子専門学校でプログラミングを中心としたITスキルを幅広く学んでいるためです。これにより、見た目の美しさだけでなく、「どうすれば直感的に使いやすくなるか」、「この機能はどうすれば実現できるのか」という観点に基づいたデザインを設計、実装することができます。
+            </div>
+
+            <div class="box">
+                <div class="self-img">
+                     <img src="img/myphoto.png" alt="Truc">
+                </div>
+
+                <div class="contact">
+                    <div class="square"></div>
+                    <a href="mailto:example@gmail.com" class="icon">
+                        <img src="img/mail.png" alt="mail">
+                    </a>
+                    <a href="tel:07085763102" class="icon">
+                        <img src="img/phone.png" alt="phone">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="education">
+        <h3 class="edu-title">Education</h3>
+        <div class="edu">
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <span>2021/3-2023/4</span>
+                    <h4>大阪YMCA日本語学校</h4>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <span>2023/04-2025/3</span>
+                    <h4>大阪総合デザイン専門学校</h4>
+                    <p>デザイン学科<br>コミュニケーションデザインコース</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot"></div>
+                    <span>2025/04-2027/3</span>
+                    <h4>大阪電子専門学校</h4>
+                    <p>情報エンジニア学科<br>ITコース</p>
+                </div>
+            </div>
+
+            <div class="skill">
+                <h5>skill</h5>
+                <div class="skill-grid">
+                    <div class="skill-card"><img src="img/ai.png" alt="AI"></div>
+                    <div class="skill-card"><img src="img/ps.png" alt="PS"></div>
+                    <div class="skill-card"><img src="img/ae.png" alt="AE"></div>
+                    <div class="skill-card"><img src="img/blender.png" alt="Blender"></div>
+                </div>
+                <h6>Certifications</h6>
+                <p>日本語能力試験　N2</p>
+                <p>情報検定(J検定) 情報活用試験　1級</p>
+                <p>情報検定(J検定) 情報システム試験<br>基本スキル・システムデザインスキル</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<section class="projects">
+
+    <h2 class="projects-tit">Projects</h2>
+
+    <div class="project-section">
+        
+        <div class="left-col">
+    
+            <div class="project" data-image="img/project/naimu.png">
+                <a href="naimu.html" class="project-link">
+                    <h3>ドライフルーツ専門店<br>「ナイムン」</h3>
+                </a>
+            </div>
+
+            <div class="project" data-image="img/project/floral-shop.png">
+                <a href="floral-joy-shop.html" class="project-link">
+                    <h3>floral joy shop</h3>
+                </a>
+            </div>
+
+            <div class="project" data-image="img/project/flower-event.png">
+                <a href="flower-event.html" class="project-link">
+                    <h3>花の世界展の催事</h3>
+                </a>
+            </div>
+
+            <div class="project" data-image="img/project/project4.png">
+                <a href="project-zenith.html" class="project-link">
+                    <h3>いちごのえる</h3>
+                </a>
+            </div>
+        
+            <div class="project" data-image="img/project/project5.png">
+                <a href="project-skymcdb.html" class="project-link">
+                    <h3>ポスターデザイン</h3>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="right-col">
+            <div class="preview-box">
+                <img id="previewImg" src="img/project/naimu.png" alt="Preview">
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* FIX RELOAD POSITION */
+history.scrollRestoration = "manual";
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant"
+    });
+
+    ScrollTrigger.refresh();
+}, 50);
+
+    setTimeout(() => {
+        ScrollTrigger.refresh();
+        updateProject();
+    }, 100);
+});
+
+/* DISABLE SCROLL INITIAL */
+document.body.style.overflow = "hidden";
+
+/* INITIAL STATES */
+gsap.set(".about-title",{ xPercent: -50, yPercent: -50 });
+gsap.set(".edu-title",{ autoAlpha: 0 });
+gsap.set(".timeline-item",{ opacity: 0, x: -40 });
+
+/* =========================
+   LOADER TIMELINE
+========================= */
+let counter = { value: 0 };
+
+gsap.to(".logo-front",{
+    clipPath: "inset(0% 0 0 0)",
+    duration: 3,
+    ease: "power2.out"
+});
+
+gsap.to(".progress-fill",{
+    width: "100%",
+    duration: 3,
+    ease: "power2.out"
+});
+
+gsap.to(counter,{
+    value: 100,
+    duration: 3,
+    ease: "none",
+    onUpdate: () => {
+        document.querySelector(".percent").innerHTML = Math.floor(counter.value) + "%";
+    },
+    onComplete: () => {
+        /* Exit loader */
+        gsap.to(".loader",{
+            yPercent: -100,
+            duration: 1.2,
+            ease: "power4.inOut"
+        });
+
+        /* Hide progress */
+        gsap.to(".progress",{
+            opacity: 0,
+            duration: 0.5
+        });
+
+        /* Show about */
+        gsap.fromTo(".about-wrap",
+            { opacity: 0 },
+            { opacity: 1, duration: 1.2, ease: "power2.out" }
+        );
+
+        /* ENABLE SCROLL */
+        document.body.style.overflow = "auto";
+    }
+});
+
+/* =========================
+   ABOUT + EDUCATION SCROLL
+========================= */
+let tlAbout = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".about-wrap",
+        start: "top top",
+        end: "+=3000",
+        scrub: 2,
+        pin: true,
+        anticipatePin: 1
+    }
+});
+
+tlAbout
+    .fromTo(".about-title", { scale: 1, y: 0 }, { scale: 2, y: 0, ease: "none" }, 0)
+    .to(".about-title", { scale: 1, y: -window.innerHeight / 2 + 150, ease: "none" }, 0.5)
+    .fromTo(".about-infor", { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: "none" }, 0.9)
+    .fromTo(".text", { opacity: 0, y: 75 }, { opacity: 1, y: 0, ease: "none" }, 1)
+    .to(".about-infor", { opacity: 0, y: -50, duration: 0.5 }, 1.5)
+    .to(".about-title", { opacity: 0, duration: 0.5 }, 1.5)
+    .fromTo(".edu-title", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1, scale: 2, ease: "power2.out" }, 1.8)
+    .to(".edu-title", { scale: 1, y: -window.innerHeight / 2 + 150, ease: "none" }, 2.3)
+    .to(".timeline", { opacity: 1, duration: 0.3 }, 2.6)
+    .to(".timeline-line", { opacity: 1, scaleY: 1, duration: 1.2, ease: "power2.out" }, 2.8)
+    .fromTo(".timeline-item", { opacity: 0, y: 60 }, { opacity: 1, y: 0, stagger: 0.4, duration: 1, ease: "power3.out" }, 3)
+    .to(".dot", { scale: 1, stagger: 0.4, duration: 0.5, ease: "back.out(3)" }, 3.2)
+    .fromTo(".skill", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, 3.5);
+
+/* =========================
+   PROJECTS TITLE ANIMATION 
+========================= */
+let tlProjects = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".projects",
+       start: "top 40%" ,// Kích hoạt hiệu ứng chữ xuất hiện sớm hơn khi cuộn tới
+        toggleActions: "play none none reverse"
+    }
+});
+
+tlProjects.fromTo(".projects-tit", 
+    { scale: 1.5, opacity: 0 }, 
+    { scale: 1, opacity: 1, duration: 1, ease: "power2.out" }
+);
+
+/* =========================
+   PROJECT PREVIEW CONTROLLER (Luke Baffait Style)
+========================= */
+const projects = document.querySelectorAll(".project");
+const previewImg = document.getElementById("previewImg");
+let isScrolling = false;
+
+function updateProject() {
+    // Lấy vị trí đường thẳng chính giữa màn hình
+    const center = window.innerHeight / 2;
+
+    projects.forEach(project => {
+        const rect = project.getBoundingClientRect();
+
+        // Nếu tâm của dòng chữ dự án đi qua đường giữa màn hình
+        if (rect.top < center && rect.bottom > center) {
+            if (!project.classList.contains("active")) {
+                projects.forEach(item => item.classList.remove("active"));
+                project.classList.add("active");
+                
+                // Hiệu ứng mờ đổi ảnh mượt
+                previewImg.style.opacity = 0.1;
+                setTimeout(() => {
+                    if (project.dataset.image) {
+                        previewImg.src = project.dataset.image;
+                    }
+                    previewImg.style.opacity = 1;
+                }, 150); 
+            }
+        }
+    });
+}
+
+// Lắng nghe sự kiện cuộn mượt bằng Throttling để tiết kiệm tài nguyên CPU
+window.addEventListener("scroll", () => {
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            updateProject();
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+});
+
+/* =========================
+   AURORA PARALLAX
+========================= */
+
+const blobs = document.querySelectorAll(".blob");
+
+window.addEventListener("mousemove",(e)=>{
+
+    const x = e.clientX / window.innerWidth - 0.5;
+    const y = e.clientY / window.innerHeight - 0.5;
+
+    blobs.forEach((blob,index)=>{
+
+        const speed = (index + 1) * 20;
+
+        blob.style.transform =
+        `translate(
+            ${x * speed}px,
+            ${y * speed}px
+        )`;
+    });
+});
+
+// Chạy khởi tạo kiểm tra ngay khi nạp trang xong
+window.addEventListener("beforeunload", () => {
+    window.scrollTo(0, 0);
+});
+</script>
+
+</body>
+</html>

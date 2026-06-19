@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Project Showcase</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+    @font-face {
+            font-family: "begitta";
+            src: url("./FONT/Begitta.otf") format("opentype");
+        }
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+    font-family:"Cormorant Infant",serif;
+}
+
+button.backBtn {
+            color: #c08a9b;
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            font-family: "begitta", sans-serif;
+            cursor: pointer;
+            position: fixed; /* Khóa nút Back ở góc trên cùng */
+            top: 30px;
+            left: 5%;
+            z-index: 10;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        button.backBtn:hover {
+            color: #ffffff;
+           
+            transform: translateX(-5px);
+        }
+
+/* ==========================
+    PROJECT SECTION
+========================== */
+
+.project-showcase{
+    position:relative;
+    height:250vh;
+    background:#000;
+}
+
+.project-wrapper{
+    position:sticky;
+    top:0;
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+}
+
+/* ==========================
+    LEFT
+========================== */
+
+.left-half{
+    width:50%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding-left:8%;
+}
+
+.project-title{
+    font-size:3rem;
+    line-height:1.4;
+    font-weight:300;
+
+    margin-bottom:50px;
+}
+
+/* ==========================
+    IMAGE STACK
+========================== */
+
+.stack-area{
+    position:relative;
+
+    width:430px;
+    height:560px;
+}
+
+.card{
+    position:absolute;
+    inset:0;
+
+    border-radius:20px;
+    overflow:hidden;
+
+    opacity:0;
+
+    transform:
+        scale(.92)
+        translateY(50px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55);
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.card.active{
+    opacity:1;
+
+    transform:
+        scale(1)
+        translateY(0);
+
+    z-index:10;
+}
+
+.card.prev{
+    opacity:.25;
+
+    transform:
+        scale(.95)
+        translateY(-15px);
+
+    z-index:5;
+}
+
+/* ==========================
+    RIGHT
+========================== */
+
+.right-half{
+    width:50%;
+
+    display:flex;
+    align-items:center;
+
+    padding-right:8%;
+}
+
+.concept-section{
+    max-width:620px;
+}
+
+.label{
+    color:#c2c2c2;
+    letter-spacing:3px;
+    font-size:.8rem;
+}
+
+.concept-section h2{
+    margin-top:15px;
+    margin-bottom:30px;
+
+    font-size:3rem;
+    font-weight:300;
+}
+
+.concept-section p{
+    color:#cfcfcf;
+
+    line-height:2;
+    margin-bottom:50px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table td{
+    padding:16px 0;
+    border-bottom:1px solid #222;
+}
+
+table td:first-child{
+    width:180px;
+    color:#bebebe;
+}
+
+/* ==========================
+    MOBILE
+========================== */
+
+@media(max-width:900px){
+
+    .project-wrapper{
+        flex-direction:column;
+    }
+
+    .left-half,
+    .right-half{
+        width:100%;
+    }
+
+    .left-half{
+        padding:100px 8% 40px;
+    }
+
+    .right-half{
+        padding:50px 8%;
+    }
+
+    .stack-area{
+        width:100%;
+        max-width:420px;
+        height:500px;
+    }
+
+    .project-title{
+        font-size:2rem;
+    }
+
+    .concept-section h2{
+        font-size:2rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <button class="backBtn" onclick="history.back()">↖BACK</button>
+
+
+<section class="project-showcase">
+
+    <div class="project-wrapper">
+
+        <!-- LEFT -->
+
+        <div class="left-half">
+
+            <h1 class="project-title">
+                ドライフルーツ専門店<br>
+                「ナイムン」
+            </h1>
+
+            <div class="stack-area">
+
+                <div class="card active">
+                    <img src="./img/project/zip.png" alt="">
+                </div>
+
+                <div class="card">
+                    <img src="./img/project/point-card.png" alt="">
+                </div>
+
+                <div class="card">
+                    <img src="./img/project/jucie.png" alt="">
+                </div>
+
+                <div class="card">
+                    <img src="./img/project/box.png" alt="">
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="right-half">
+
+            <div class="concept-section">
+
+                <span class="label">
+                    PROJECT
+                </span>
+
+                <h2>
+                    Concept
+                </h2>
+
+                <p>
+                    ナイムンは沖縄のトロピカルフルーツを使用した
+                    ドライフルーツブランドです。
+                    沖縄の自然や温かさを感じられる
+                    パッケージデザインを目指しました。
+                </p>
+
+                <table>
+
+                    <tr>
+                        <td>Category</td>
+                        <td>ブランドデザイン</td>
+                    </tr>
+
+                    
+
+                    
+
+                    <tr>
+                        <td>Tools</td>
+                        <td>Illustrator / Photoshop</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script>
+
+gsap.registerPlugin(ScrollTrigger);
+
+const cards =
+document.querySelectorAll(".card");
+
+ScrollTrigger.create({
+
+    trigger: ".project-showcase",
+
+    start: "top top",
+
+    end: "bottom bottom",
+
+    scrub: 1,
+
+    onUpdate:(self)=>{
+
+        const progress =
+        self.progress;
+
+        let current = 0;
+
+        if(progress < 0.25){
+
+    current = 0;
+
+}else if(progress < 0.5){
+
+    current = 1;
+
+}else if(progress < 0.75){
+
+    current = 2;
+
+}else{
+
+    current = 3;
+}
+
+        cards.forEach((card,index)=>{
+
+            card.classList.remove(
+                "active",
+                "prev"
+            );
+
+            if(index === current){
+
+                card.classList.add(
+                    "active"
+                );
+            }
+
+            if(index === current - 1){
+
+                card.classList.add(
+                    "prev"
+                );
+            }
+
+        });
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

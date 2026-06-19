@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>floral joy shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300&family=Shippori+Mincho+B1:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: "begitta";
+            src: url("./FONT/Begitta.otf") format("opentype");
+        }
+
+      
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        body {
+            background: radial-gradient( circle at top left, #fff7f8 0%, #f6dde4 45%, #e6c0cb 100% );
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Giúp nền đứng yên tuyệt đối không bị gãy sọc */
+            font-family: "Shippori Mincho B1", serif;
+        }
+
+        /* Nút BACK tinh tế */
+        button.backBtn {
+            color: #c08a9b;
+            background-color: transparent;
+            border: none;
+            font-size: 30px;
+            font-family: "begitta", sans-serif;
+            cursor: pointer;
+            position: fixed; /* Khóa nút Back ở góc trên cùng */
+            top: 30px;
+            left: 5%;
+            z-index: 10;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        button.backBtn:hover {
+            color: #4a2431;
+           
+            transform: translateX(-5px);
+        }
+
+       
+        
+        /* Khung bọc lớn chứa cả 2 cột */
+        .concept {
+            display: flex; /* KÍCH HOẠT CHIA CỘT */
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* CỘT TRÁI: Khóa cố định (Sticky) chứa tiêu đề */
+        .left {
+            width: 45%;
+            height: 100vh; /* Bắt buộc cao bằng màn hình để sticky hoạt động */
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding-left: 8%;
+            padding-right: 5%;
+            box-sizing: border-box;
+        }
+
+        .left h1 {
+            color: #4a2431;
+            font-size: 3vw; /* Dùng đơn vị độ rộng màn hình để tự co giãn mượt */
+            text-align: left;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+            
+            font-weight: lighter;
+        }
+
+        /* CỘT PHẢI: Cuộn nội dung chi tiết và hình ảnh (Kéo dài thoải mái) */
+        .right {
+            width: 55%;
+            padding: 25vh 8% 20vh 2%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 80px; /* Tạo khoảng cách thoáng đãng giữa các mục */
+        }
+
+        .concept-section h2,h3 {
+            font-size: 20px;
+            color: #4a2431;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .concept-section p {
+            color: #5c4850;
+            font-size: 18px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Khung chứa hình ảnh Mockup sản phẩm */
+        .project-img-box {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(92, 72, 80, 0.12); /* Đổ bóng mờ ấm áp */
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        p{
+            font-family: "Shippori Mincho B1", serif;
+            
+        }
+        .color-img {
+            width: 60%;
+            height: auto;
+            
+        }
+
+        /* Responsive cho điện thoại di động */
+        @media (max-width: 768px) {
+            .concept {
+                flex-direction: column;
+            }
+            .left, .right {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 40px 5%;
+            }
+            .left {
+                padding-top: 100px;
+            }
+            .left h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nút quay lại cố định ở góc -->
+    <button class="backBtn" onclick="history.back()">BACK</button>
+
+    <!-- Wrapper chia đôi màn hình -->
+    <div class="concept">
+        
+        <!-- CỘT TRÁI: Đứng yên khi cuộn chuột -->
+        <div class="left">
+            <h1>floral joy shop</h1>
+             <div class="project-img-box">
+                <img src="/img/project/foral-shop2.png" alt="Naimun Mockup 1">
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI: Cuộn tự do (Chứa chữ và Hình ảnh Mockup thiết kế của bạn) -->
+        <div class="right">
+            
+            <!-- Khối thông tin Concept -->
+            <div class="concept-section">
+                <h2>コンセプト</h2>
+                <p>花を通して「贈る喜び」と「もらう喜び」を届けるフラワーショップ。旬の花々を使った個性的な花束で、特別な想いを表現します。</p>
+                <h3>ターゲット</h3>
+                <p>20代〜40代の女性、花を贈る人や花のある暮らしを楽しみたい人。誕生日や記念日などのギフト需要を中心に想定しています。</p>
+                
+            </div>
+
+            
+
+        </div>
+        
+    </div>
+
+</body>
+</html>
