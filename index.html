@@ -253,6 +253,8 @@ gsap.to(counter,{
 /* =========================
    ABOUT + EDUCATION SCROLL
 ========================= */
+
+const isMobile = window.innerWidth <= 768;
 let tlAbout = gsap.timeline({
     scrollTrigger: {
         trigger: ".about-wrap",

@@ -646,7 +646,16 @@ h4{
     .about-title,
     .edu-title,
     .projects-tit{
-        font-size: 42px;
+         position:relative;
+        top:auto;
+        left:auto;
+        transform:none !important;
+
+        display:block;
+        text-align:center;
+
+        font-size:48px;
+        margin-bottom:40px;
     }
 
     .project h3{
@@ -677,6 +686,15 @@ h4{
     .timeline{
         padding-left:25px;
     }
+
+    .timeline-item h4{
+        font-size: 18px;
+    }
+
+    .timeline-item p{
+        font-size: 14px;
+    }
+    
 
       .project-section{
         flex-direction:column;
