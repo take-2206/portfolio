@@ -46,7 +46,8 @@
     <div class="vignette"></div>
 </div>
 
-<div class="about-wrap">
+<div class="desktop-version">
+    <div class="about-wrap">
 
     <section class="about">
         <h2 class="about-title">About me</h2>
@@ -170,6 +171,106 @@
     </div>
 
 </section>
+</div>
+
+<!-- mobile -->
+<div class="mobile-version">
+    <section class="mobile-about">
+    <h2>About me</h2>
+    <img src="img/myphoto.png" alt="Truc">
+    <p>
+        ベトナム出身のチュックと申します...
+    </p>
+    </section>
+
+    <div class="mobile-version">
+
+    <section class="mobile-about">
+
+        <h2>About me</h2>
+
+        <img src="img/myphoto.png" alt="Truc">
+
+        <p>
+            ベトナム出身のチュックと申します。
+            現在、大阪を拠点に活動しています。
+        </p>
+
+        <div class="mobile-contact">
+
+            <a href="mailto:lengocthanhtruc09@gmail.com">
+                <img src="img/mail.png">
+            </a>
+
+            <a href="tel:07085763102">
+                <img src="img/phone.png">
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="mobile-education">
+
+        <h2>Education</h2>
+
+        <div class="mobile-timeline">
+
+            <div class="item">
+                <span>2021/03-2023/04</span>
+                <h3>大阪YMCA日本語学校</h3>
+            </div>
+
+            <div class="item">
+                <span>2023/04-2025/03</span>
+                <h3>大阪総合デザイン専門学校</h3>
+                <p>デザイン学科</p>
+            </div>
+
+            <div class="item">
+                <span>2025/04-2027/03</span>
+                <h3>大阪電子専門学校</h3>
+                <p>ITコース</p>
+            </div>
+
+        </div>
+
+        <h2>Skills</h2>
+
+        <div class="mobile-skills">
+
+            <img src="img/ai.png">
+            <img src="img/ps.png">
+            <img src="img/ae.png">
+            <img src="img/blender.png">
+
+        </div>
+
+    </section>
+
+    <section class="mobile-projects">
+
+        <h2>Projects</h2>
+
+        <a href="naimu.html" class="project-card">
+            <img src="img/project/naimu.png">
+            <h3>ドライフルーツ専門店「ナイムン」</h3>
+        </a>
+
+        <a href="floral-joy-shop.html" class="project-card">
+            <img src="img/project/floral-shop.png">
+            <h3>Floral Joy Shop</h3>
+        </a>
+
+        <a href="flower-event.html" class="project-card">
+            <img src="img/project/flower-event.png">
+            <h3>花の世界展の催事</h3>
+        </a>
+
+    </section>
+
+</div>
+
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
@@ -255,7 +356,7 @@ gsap.to(counter,{
 ========================= */
 
 const isMobile = window.innerWidth <= 768;
-if(!isMObie){
+if(!isMobie){
 let tlAbout = gsap.timeline({
     scrollTrigger: {
         trigger: ".about-wrap",
@@ -302,33 +403,65 @@ tlProjects.fromTo(".projects-tit",
    PROJECT PREVIEW CONTROLLER (Luke Baffait Style)
 ========================= */
 const projects = document.querySelectorAll(".project");
-const previewImg = document.getElementById("previewImg");
-let isScrolling = false;
+const isMobile = window.innerWidth <= 768;
 
-function updateProject() {
-    // Lấy vị trí đường thẳng chính giữa màn hình
-    const center = window.innerHeight / 2;
+if (!isMobile) {
 
-    projects.forEach(project => {
-        const rect = project.getBoundingClientRect();
+    const projects = document.querySelectorAll(".project");
+    const previewImg = document.getElementById("previewImg");
 
-        // Nếu tâm của dòng chữ dự án đi qua đường giữa màn hình
-        if (rect.top < center && rect.bottom > center) {
-            if (!project.classList.contains("active")) {
-                projects.forEach(item => item.classList.remove("active"));
-                project.classList.add("active");
-                
-                // Hiệu ứng mờ đổi ảnh mượt
-                previewImg.style.opacity = 0.1;
-                setTimeout(() => {
-                    if (project.dataset.image) {
-                        previewImg.src = project.dataset.image;
-                    }
-                    previewImg.style.opacity = 1;
-                }, 150); 
+    let isScrolling = false;
+
+    function updateProject() {
+
+        const center = window.innerHeight / 2;
+
+        projects.forEach(project => {
+
+            const rect = project.getBoundingClientRect();
+
+            if (rect.top < center && rect.bottom > center) {
+
+                if (!project.classList.contains("active")) {
+
+                    projects.forEach(item =>
+                        item.classList.remove("active")
+                    );
+
+                    project.classList.add("active");
+
+                    previewImg.style.opacity = 0.1;
+
+                    setTimeout(() => {
+
+                        if (project.dataset.image) {
+                            previewImg.src = project.dataset.image;
+                        }
+
+                        previewImg.style.opacity = 1;
+
+                    }, 150);
+                }
             }
+        });
+    }
+
+    window.addEventListener("scroll", () => {
+
+        if (!isScrolling) {
+
+            window.requestAnimationFrame(() => {
+
+                updateProject();
+
+                isScrolling = false;
+
+            });
+
+            isScrolling = true;
         }
     });
+
 }
 
 // Lắng nghe sự kiện cuộn mượt bằng Throttling để tiết kiệm tài nguyên CPU
@@ -341,35 +474,38 @@ window.addEventListener("scroll", () => {
         isScrolling = true;
     }
 });
-
+}
 /* =========================
    AURORA PARALLAX
 ========================= */
 
 const blobs = document.querySelectorAll(".blob");
 
-window.addEventListener("mousemove",(e)=>{
+if(!isMobile){
 
-    const x = e.clientX / window.innerWidth - 0.5;
-    const y = e.clientY / window.innerHeight - 0.5;
+    window.addEventListener("mousemove",(e)=>{
 
-    blobs.forEach((blob,index)=>{
+        const x = e.clientX / window.innerWidth - 0.5;
+        const y = e.clientY / window.innerHeight - 0.5;
 
-        const speed = (index + 1) * 20;
+        blobs.forEach((blob,index)=>{
 
-        blob.style.transform =
-        `translate(
-            ${x * speed}px,
-            ${y * speed}px
-        )`;
+            const speed = (index + 1) * 20;
+
+            blob.style.transform =
+            `translate(${x*speed}px,${y*speed}px)`;
+        });
+
     });
-});
+
+}
 
 // Chạy khởi tạo kiểm tra ngay khi nạp trang xong
 window.addEventListener("beforeunload", () => {
     window.scrollTo(0, 0);
 });
-}
+
+
 </script>
 
 </body>
