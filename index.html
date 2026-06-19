@@ -255,6 +255,7 @@ gsap.to(counter,{
 ========================= */
 
 const isMobile = window.innerWidth <= 768;
+if(!isMObie){
 let tlAbout = gsap.timeline({
     scrollTrigger: {
         trigger: ".about-wrap",
@@ -368,6 +369,7 @@ window.addEventListener("mousemove",(e)=>{
 window.addEventListener("beforeunload", () => {
     window.scrollTo(0, 0);
 });
+}
 </script>
 
 </body>
