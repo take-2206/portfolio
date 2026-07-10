@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journey Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<div class="hero">
+  <h1 class="hero-title">TRUC'S PORTFOLIO</h1>
+  <p style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,.6); font-size: 24px;">begin my journey</p>
+  <button id="startBtn">GET STARTED</button>
+</div>
+
+<div class="scene">
+    <div class="bg"></div>
+    
+    <canvas id="blackhole-canvas" style="position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 9998; pointer-events: none; opacity: 0; transition: opacity 0.02s;"></canvas>
+    
+    <img id="plane" src="img/plane.png" />
+   
+<main class="journey">
+    <div class="flight-space"></div>
+
+    <section class="panel left" id="about">
+        <h3 class="about-title" >About</h3>
+        <div class="about-inf">
+            <p style="font-size: 24px;margin-top: auto;color:#3E365D;font-weight:500;">LE NGOC THANH TRUC</p>
+            <p style="color:#4D4764;line-height:2;">ベトナムから参りましたチュックです。<br>、大阪総合デザイ
+ン専門学校でデザインスキルを習得し、大阪電子専門学校でプログラミングを中心としたIT
+スキルを幅広く学んでいるためです。これにより、見た目の美しさだけでなく、「どうすれば
+直感的に使いやすくなるか」、「この機能はどうすれば実現できるのか」という観点に基づい
+たデザインを設計、実装することができます。 </p>
+        </div>
+    </section>
+
+    <section class="panel right" id="education">
+        <h3 class="title">Education</h3>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-date">2021/03 - 2023/04</div>
+                <div class="timeline-content"><h4>大阪YMCA日本語学校</h4></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024/04 - 2025/03</div>
+                <div class="timeline-content">
+                    <h4>大阪総合デザイン専門学校</h4>
+                    <p>デザイン学科 / コミュニケーションデザインコース</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025/04 - 2027/03</div>
+                <div class="timeline-content">
+                    <h4>大阪電子専門学校</h4>
+                    <p>情報エンジニア学科 / ITコース</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel left" id="skills">
+        <h3>Skills</h3>
+        <div class="skill-icon">
+            <img src="img/ai.png" alt="">
+            <img src="img/ps.png" alt="">
+            <img src="img/ae.png" alt="">
+            <img src="img/blender.png" alt="">
+        </div>
+        <div class="certification">
+            <h4 style="font-size: 20px;">資格</h4>
+             <p class="cert-item">日本語能力試験 N2</p>
+
+    <p class="cert-item">
+        情報検定(J検定) 情報活用試験 1級
+    </p>
+
+    <p class="cert-item">
+        情報検定(J検定) 情報システム試験
+        基本スキル・システムデザインスキル
+    </p>
+        </div>
+    </section>
+
+    <section id="blackhole-trigger"></section>
+
+<section class="panel right" id="projects"> 
+    <h3 class="project-title">Project</h3>
+    <div class="project-track">
+        
+        <div class="project-card">
+            <img src="img/project/floral-joy.png" alt="">
+            <div class="info">
+                <h4>Joy Floral Shop</h4>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <img src="img/project/naimun.png" alt="">
+            <div class="info">
+                <h4>Naimu Design System</h4>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <img src="img/project/flower-event.png" alt="">
+            <div class="info">
+                <h4>Flower Event</h4>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <img src="img/project/book-cover.png" alt="">
+            <div class="info">
+                <h4>Book Cover Design</h4>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <img src="img/project/cd-cover.png" alt="">
+            <div class="info">
+                <h4>CD Cover</h4>
+            </div>
+        </div>
+
+         <div class="project-card">
+            <img src="img/project/poster1.png" alt="">
+            <div class="info">
+                <h4>Poster Design</h4>
+            </div>
+        </div>
+
+         <div class="project-card">
+            <img src="img/project/logo.png" alt="">
+            <div class="info">
+                <h4>Craft Beer Logo</h4>
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
